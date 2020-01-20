@@ -5,8 +5,9 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 //import com.revrobotics.CANSparkMax;
 //import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 //import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.Encoder;
 import frc.robot.ControllerMap;
 
 public final class WristSubsystem {
@@ -26,11 +27,11 @@ public final class WristSubsystem {
      double front_Outake_Sensitivity = 1.0; //Value 0-1
      double back_Intake_Sensitivity = 1.0; //Value 0-1
      double back_Outake_Sensitivity = 1.0; //Value 0-1
-     double frontRollerSpeed = ((ControllerMap.d_Trigger_R) * front_Outake_Sensitivity) 
-     - ((ControllerMap.d_Trigger_L) *front_Intake_Sensitivity);
+     double frontRollerSpeed = ((ControllerMap.driverController.getTriggerAxis(Hand.kRight)) * front_Outake_Sensitivity) 
+     - ((ControllerMap.driverController.getTriggerAxis(Hand.kLeft)) *front_Intake_Sensitivity);
 
-     double backRollerSpeed = ((ControllerMap.d_Trigger_R) * back_Outake_Sensitivity) 
-     - ((ControllerMap.d_Trigger_L) *back_Intake_Sensitivity);
+     double backRollerSpeed = ((ControllerMap.driverController.getTriggerAxis(Hand.kRight)) * back_Outake_Sensitivity) 
+     - ((ControllerMap.driverController.getTriggerAxis(Hand.kLeft)) *back_Intake_Sensitivity);
 
      m_FrontVictor.set(frontRollerSpeed);
      m_BackVictor.set(backRollerSpeed);

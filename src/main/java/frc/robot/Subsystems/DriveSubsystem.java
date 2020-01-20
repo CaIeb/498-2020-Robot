@@ -42,8 +42,8 @@ public final class DriveSubsystem {
  public static final void driveTeleOp() {
     double joystick_LY_Sensitivity = 1.0;
     double joystick_RX_Sensitivity = .75;
-    double drive_Speed = (ControllerMap.d_Y_Axis_L * joystick_LY_Sensitivity);
-    double steer_Speed = (ControllerMap.d_X_Axis_R * joystick_RX_Sensitivity);
+    double drive_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_LY) * joystick_LY_Sensitivity);
+    double steer_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_RX) * joystick_RX_Sensitivity);
     m_drive.arcadeDrive(drive_Speed, steer_Speed);
  }
  public static void resetEncoders() {

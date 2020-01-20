@@ -13,7 +13,7 @@ public class Limelight {
    {
     //double steer = m_Controller.getX(Hand.kRight);
     //double drive = -m_Controller.getY(Hand.kLeft);
-    boolean buttonDetected = ControllerMap.d_B_Button;
+    boolean buttonDetected = ControllerMap.driverController.getBButton();
 
 
    if (buttonDetected)
@@ -29,7 +29,7 @@ public class Limelight {
         }
         else
         {
-          driveTeleOp();
+          DriveSubsystem.driveTeleOp();
         }
     }
  public static void Update_Limelight_Tracking()
