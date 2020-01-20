@@ -16,7 +16,7 @@ public final class WristSubsystem {
     public static TalonSRX m_SMax = new TalonSRX(wristTalonID);
     public static Victor m_FrontVictor = new Victor (frontVictorID);
     public static Victor m_BackVictor = new Victor(backVictorID);
-    public static Encoder m_WristEncoder = new Encoder(1, 2);
+    //public static Encoder m_WristEncoder = new Encoder(1, 2);
     //private static double intakeWristPosition = 1;
     //private static double scoringWristPosition = .5;
     //private static double storageWristPosition = .2;
@@ -26,11 +26,11 @@ public final class WristSubsystem {
      double front_Outake_Sensitivity = 1.0; //Value 0-1
      double back_Intake_Sensitivity = 1.0; //Value 0-1
      double back_Outake_Sensitivity = 1.0; //Value 0-1
-     double frontRollerSpeed = ((ControllerMap.driverController.getRawAxis(ControllerMap.trigger_R)) * front_Outake_Sensitivity) 
-     - ((ControllerMap.driverController.getRawAxis(ControllerMap.trigger_L)) *front_Intake_Sensitivity);
+     double frontRollerSpeed = ((ControllerMap.d_Trigger_R) * front_Outake_Sensitivity) 
+     - ((ControllerMap.d_Trigger_L) *front_Intake_Sensitivity);
 
-     double backRollerSpeed = ((ControllerMap.driverController.getRawAxis(ControllerMap.trigger_R)) * back_Outake_Sensitivity) 
-     - ((ControllerMap.driverController.getRawAxis(ControllerMap.trigger_L)) *back_Intake_Sensitivity);
+     double backRollerSpeed = ((ControllerMap.d_Trigger_R) * back_Outake_Sensitivity) 
+     - ((ControllerMap.d_Trigger_L) *back_Intake_Sensitivity);
 
      m_FrontVictor.set(frontRollerSpeed);
      m_BackVictor.set(backRollerSpeed);

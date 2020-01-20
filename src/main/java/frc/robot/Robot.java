@@ -92,7 +92,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     RobotContainer.TeleOp();
-}
+  }
 
   /**
    * This function is called periodically during test mode.

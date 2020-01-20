@@ -8,16 +8,15 @@ public class Limelight {
   private static boolean m_LimelightHasValidTarget = false;
   private static double m_LimelightDriveCommand = 0.0;
   private static double m_LimelightSteerCommand = 0.0;
+
  public static void Limelight_Tracking()
    {
     //double steer = m_Controller.getX(Hand.kRight);
     //double drive = -m_Controller.getY(Hand.kLeft);
-    boolean auto = ControllerMap.driverController.getBButton();
+    boolean buttonDetected = ControllerMap.d_B_Button;
 
-    double v_steer = 0.70;
-    double v_drive = 0.70;
 
-   if (auto)
+   if (buttonDetected)
      {
       if (m_LimelightHasValidTarget)
        {
@@ -30,7 +29,7 @@ public class Limelight {
         }
         else
         {
-          DriveSubsystem.m_drive.arcadeDrive(v_drive,v_steer);
+          driveTeleOp();
         }
     }
  public static void Update_Limelight_Tracking()
