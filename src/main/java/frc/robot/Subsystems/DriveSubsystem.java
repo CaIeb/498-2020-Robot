@@ -3,7 +3,7 @@ package frc.robot.Subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.CounterBase;
+//import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -11,12 +11,12 @@ import frc.robot.ControllerMap;
 
 public final class DriveSubsystem {
     //Speed controller CAN ID
-    public static int r1VictorID = 0;
-    public static int r2VictorID = 1;
-    public static int rTalonID = 2;
-    public static int l1VictorID = 3;
-    public static int l2VictorID = 4;
-    public static int lTalonID = 5;
+    public static int rTalonID = 1;
+    public static int r1VictorID = 2;
+    public static int r2VictorID = 3;
+    public static int l1VictorID = 4;
+    public static int l2VictorID = 5;
+    public static int lTalonID = 6;
 
     public  static WPI_VictorSPX m_RVictorFollow_0 = new WPI_VictorSPX(r1VictorID);
     public  static WPI_VictorSPX m_RVictorFollow_1 = new WPI_VictorSPX(r2VictorID);
@@ -27,8 +27,8 @@ public final class DriveSubsystem {
     public static WPI_TalonSRX m_LTalon = new WPI_TalonSRX(lTalonID);
     public static DifferentialDrive m_drive = new DifferentialDrive(m_LTalon, m_RTalon);
     //Encoder Information
-    public static Encoder m_REncoder = new Encoder(1, 2, false, CounterBase.EncodingType.k4X);
-    public static Encoder m_LEncoder = new Encoder(3, 4, false, CounterBase.EncodingType.k4X);
+    public static Encoder m_REncoder = new Encoder(0, 1, true);
+    public static Encoder m_LEncoder = new Encoder(3, 4, true);
 
 
  public static void driveInit() {
