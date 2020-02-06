@@ -1,5 +1,5 @@
 
-package frc.robot;
+package frc.robot.Maps;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID;;
@@ -31,22 +31,22 @@ public final class ControllerMap{
   public static boolean o_Bumper_L = operatorController.getBumper(GenericHID.Hand.kLeft);
   public static boolean o_Bumper_R = operatorController.getBumper(GenericHID.Hand.kRight);
   //Xbox Triggers
-  public static double d_Trigger_L = driverController.getTriggerAxis(GenericHID.Hand.kLeft);
-  public static double d_Trigger_R = driverController.getTriggerAxis(GenericHID.Hand.kRight);
-  public static double o_Trigger_L = operatorController.getTriggerAxis(GenericHID.Hand.kLeft);
-  public static double o_Trigger_R = operatorController.getTriggerAxis(GenericHID.Hand.kRight);
+  public static double d_Trigger_L() {return driverController.getTriggerAxis(GenericHID.Hand.kLeft);}
+  public static double d_Trigger_R() {return driverController.getTriggerAxis(GenericHID.Hand.kRight);}
+  public static double o_Trigger_L() {return operatorController.getTriggerAxis(GenericHID.Hand.kLeft);}
+  public static double o_Trigger_R() {return operatorController.getTriggerAxis(GenericHID.Hand.kRight);}
   //Xbox Joystick X-Axis
-  public static double d_X_Axis_L = driverController.getX(GenericHID.Hand.kLeft);
-  public static double d_X_Axis_R = driverController.getX(GenericHID.Hand.kRight);
-  public static double o_X_Axis_L = operatorController.getX(GenericHID.Hand.kLeft);
-  public static double o_X_Axis_R = operatorController.getX(GenericHID.Hand.kRight);
+  public static double d_X_Axis_L() {return driverController.getX(GenericHID.Hand.kLeft);}
+  public static double d_X_Axis_R() {return driverController.getX(GenericHID.Hand.kRight);}
+  public static double o_X_Axis_L() {return operatorController.getX(GenericHID.Hand.kLeft);}
+  public static double o_X_Axis_R() {return operatorController.getX(GenericHID.Hand.kRight);}
   //Xbox Joystick Y-Axis
     //Driver
-  public static double d_Y_Axis_L = driverController.getY(GenericHID.Hand.kLeft);
-  public static double d_Y_Axis_R = driverController.getY(GenericHID.Hand.kRight);
+  public static double d_Y_Axis_L() {return driverController.getY(GenericHID.Hand.kLeft);}
+  public static double d_Y_Axis_R() {return driverController.getY(GenericHID.Hand.kRight);}
     //Operator
-  public static double o_Y_Axis_L = operatorController.getY(GenericHID.Hand.kLeft);
-  public static double o_Y_Axis_R = operatorController.getY(GenericHID.Hand.kRight);
+  public static double o_Y_Axis_L() {return operatorController.getY(GenericHID.Hand.kLeft);}
+  public static double o_Y_Axis_R() {return operatorController.getY(GenericHID.Hand.kRight);}
   //Xbox Buttons
     //Driver
   public static boolean d_B_Button = driverController.getBButton();

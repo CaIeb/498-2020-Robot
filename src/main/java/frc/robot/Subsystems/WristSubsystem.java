@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 //import edu.wpi.first.wpilibj.Talon;
 //import edu.wpi.first.wpilibj.Encoder;
-import frc.robot.ControllerMap;
+import frc.robot.Maps.ControllerMap;
 
 public final class WristSubsystem {
     private static int wristTalonID  = 7;
