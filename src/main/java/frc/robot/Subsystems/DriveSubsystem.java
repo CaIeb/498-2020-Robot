@@ -38,12 +38,12 @@ public final class DriveSubsystem {
     m_LVictorFollow_4.follow(m_LTalon);
  }
  public static final void driveTeleOp() {
-    double joystick_LY_Sensitivity = 1.0;
-    double joystick_RX_Sensitivity = .75;
-    double drive_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_LY) * joystick_LY_Sensitivity);
-    double steer_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_RX) * joystick_RX_Sensitivity);
-    //double drive_Speed = ControllerMap.d_Y_Axis_L() * Smart_Dashboard.smartDriveSpeed();
-    //double steer_Speed = ControllerMap.d_X_Axis_R() * Smart_Dashboard.smartSteerSpeed();
+    //double joystick_LY_Sensitivity = 1.0;
+    //double joystick_RX_Sensitivity = .75;
+    //double drive_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_LY) * joystick_LY_Sensitivity);
+    //double steer_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_RX) * joystick_RX_Sensitivity);
+    double drive_Speed = ControllerMap.d_Y_Axis_L() * Smart_Dashboard.smartDriveSpeed();
+    double steer_Speed = ControllerMap.d_X_Axis_R() * Smart_Dashboard.smartSteerSpeed();
     m_drive.arcadeDrive(drive_Speed, steer_Speed);
    }
 }
