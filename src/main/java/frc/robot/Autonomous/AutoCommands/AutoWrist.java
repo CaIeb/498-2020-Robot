@@ -1,43 +1,49 @@
 package frc.robot.Autonomous.AutoCommands;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Subsystems.DriveSubsystem;
-import frc.robot.Maps.WristPositionMap;
-import frc.robot.Sensors.Encoders.*;
+import frc.robot.Subsystems.WristSubsystem.*;
 
 public class AutoWrist extends Command {
-    
-    public double speed;
-    public double wristPosition; 
 
+ public double wristPosition;
+ double speed = .9;
     
-     /**
-      * @param wristPosition 1 (Score)-- 2 (Store)-- 3 (Intake)-- Refer to Maps.WristPositionMap for double wristPosition
-      * @param speed Speed to move wrist
-      */
+    /**
+    * @param wristPosition 1 (Score)-- 2 (Store)-- 3 (Intake)-- Refer to Maps.WristPositionMap for double wristPosition
+    */
    
-     public AutoWrist(double wristPosition, double speed){ 
+    public AutoWrist(double wristPosition){ 
 
         this.wristPosition = wristPosition; 
-        this.speed = speed;
 
     }
-    protected boolean isFinished() {
-         return Math.abs(DriveEncoders.getTrueLeftDistance()) >= wristPosition;
-    }
+
     protected void initialize() {
-        DriveEncoders.m_LEncoder.reset();
+
     }
     protected void execute() {
-        if (wristPosition == WristPositionMap.score) {
-         WristEncoder.setScoringPosition();
+     double toleranceAngle = 20;
+
+     double kP = wristPosition - WristEncoder.getWristAngle();
+     double kI = .2;
+     double toleranceSpeedFactor = kP * kI;
+
+        if (WristEncoder.getWristAngle() > (wristPosition + toleranceAngle) || WristEncoder.getWristAngle() < wristPosition - toleranceAngle){
+            Wrist.m_WristTalon.set(ControlMode.PercentOutput, speed);
         }
-        else if (wristPosition == WristPositionMap.store) {
-         WristEncoder.setStoragePosition();
+
+        else if (WristEncoder.getWristAngle() < (wristPosition + toleranceAngle) && WristEncoder.getWristAngle() > (wristPosition - toleranceAngle)) {
+            Wrist.m_WristTalon.set(ControlMode.PercentOutput, speed * toleranceSpeedFactor);
         }
-        else if (wristPosition == WristPositionMap.intake) {
-         WristEncoder.setIntakePosition();
+        else {
+         end();
         }
+    }
+    protected boolean isFinished() {
+        return WristEncoder.getWristAngle() == wristPosition;
     }
     protected void end(){
         DriveSubsystem.m_drive.arcadeDrive(0, 0);

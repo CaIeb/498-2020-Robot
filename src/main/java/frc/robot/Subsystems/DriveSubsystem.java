@@ -2,12 +2,12 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 //import edu.wpi.first.wpilibj.CounterBase;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Smart_Dashboard;
-import frc.robot.Maps.ControllerMap;;
+import frc.robot.Maps.ControllerMap;
+import frc.robot.Sensors.Encoders.DriveEncoders;;
 
 public final class DriveSubsystem {
     //Speed controller CAN ID
@@ -29,19 +29,21 @@ public final class DriveSubsystem {
     public static DifferentialDrive m_drive = new DifferentialDrive(m_LTalon, m_RTalon);
 
 
- public static void driveInit() {
+public static void driveInit() {
     //Right Drive SpeedControllerGroup
     m_RVictorFollow_0.follow(m_RTalon);
     m_RVictorFollow_1.follow(m_RTalon);
     //Left Drive SpeedControllerGroup
     m_LVictorFollow_3.follow(m_LTalon);
     m_LVictorFollow_4.follow(m_LTalon);
+    //Configure Encoders
+    DriveEncoders.configureEncoders();
  }
  public static final void driveTeleOp() {
     //double joystick_LY_Sensitivity = 1.0;
     //double joystick_RX_Sensitivity = .75;
-    //double drive_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_LY) * joystick_LY_Sensitivity);
-    //double steer_Speed = (ControllerMap.driverController.getRawAxis(ControllerMap.joystick_RX) * joystick_RX_Sensitivity);
+    //double drive_Speed = ControllerMap.d_Y_Axis_L() * joystick_LY_Sensitivity);
+    //double steer_Speed = ControllerMap.d_X_Axis_R() * joystick_RX_Sensitivity);
     double drive_Speed = ControllerMap.d_Y_Axis_L() * Smart_Dashboard.smartDriveSpeed();
     double steer_Speed = ControllerMap.d_X_Axis_R() * Smart_Dashboard.smartSteerSpeed();
     m_drive.arcadeDrive(drive_Speed, steer_Speed);

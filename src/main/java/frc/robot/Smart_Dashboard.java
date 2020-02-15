@@ -6,6 +6,7 @@ import frc.robot.Sensors.Gyro;
 //import frc.robot.Subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import frc.robot.Sensors.Encoders.*;
+import frc.robot.Subsystems.WristSubsystem.WristEncoder;
 
 public final class Smart_Dashboard {
     public static int pdpID = 0;
@@ -28,24 +29,28 @@ public final class Smart_Dashboard {
 
     public static double smartDriveSpeed() {return SmartDashboard.getNumber("Drive Speed", .8);}
     public static double smartSteerSpeed() {return SmartDashboard.getNumber("Steer Speed", .8);}
+    public static double smartWristSpeed() {return SmartDashboard.getNumber("Wrist Speed", .8);}
 
     public static void Smart_Dashboard_Periodic() {
         //Put general readings/updates here
         SmartDashboard.putNumber("PDP Voltage", pdpVoltage);
         SmartDashboard.putNumber("Left Encoder Distance", DriveEncoders.getTrueLeftDistance());
         SmartDashboard.putNumber("Right Encoder Distance", DriveEncoders.getTrueRightDistance());
-        SmartDashboard.putNumber("Barometric Pressure", Gyro.gyro.getBarometricPressure());
+        SmartDashboard.putNumber("Wrist Angle", WristEncoder.getWristAngle());
+        //SmartDashboard.putNumber("Barometric Pressure", Gyro.gyro.getBarometricPressure());
         //SmartDashboard.putNumber("Gyro X", Gyro.gyro.getGyroAngleX());
         //SmartDashboard.putNumber("Gyro Y", Gyro.gyro.getGyroAngleY());
-        SmartDashboard.putNumber("Drive Angle (Z)", Gyro.gyro.getGyroAngleZ());
+        SmartDashboard.putNumber("Drive Angle (Z)", Gyro.gyroZangle());
         smartDriveSpeed();
+        smartSteerSpeed();
+        smartWristSpeed();
     }
     public static void Smart_Dashboard_RobotInit() {
         SmartDashboard.putNumber("Drive Speed", .8);
         SmartDashboard.putNumber("Steer Speed", .8);
+        SmartDashboard.putNumber("Wrist Speed", .8);
         //Mostly just auto selections
         m_autochooser.setDefaultOption("Auto 1", auto1);
-        m_autochooser.addOption("Test Auto", testauto);
         m_autochooser.addOption("Auto 2", auto2);
         m_autochooser.addOption("Auto 3", auto3);
         m_autochooser.addOption("Auto 4", auto4);

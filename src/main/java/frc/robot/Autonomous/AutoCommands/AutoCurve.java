@@ -24,7 +24,7 @@ public class AutoCurve extends Command {
         this.distanceSpeed = distanceSpeed;
     }
     protected boolean isFinished() {
-        return Math.abs(Gyro.gyroZangle()) >= turnAngle || Math.abs(DriveEncoders.getTrueLeftDistance()) >= distance;
+        return Math.abs(Gyro.gyroZangle()) >= turnAngle && Math.abs(DriveEncoders.getTrueLeftDistance()) >= distance;
     }
     protected void initialize() {
         Gyro.gyro.reset();

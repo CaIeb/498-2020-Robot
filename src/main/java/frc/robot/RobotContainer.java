@@ -1,7 +1,9 @@
 package frc.robot;
 import frc.robot.Subsystems.*;
+import frc.robot.Subsystems.WristSubsystem.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.Autonomous.*;
+import frc.robot.Sensors.*;
 public class RobotContainer {
  public static void RobotPeriodic() {
     Smart_Dashboard.Smart_Dashboard_Periodic();
@@ -16,7 +18,8 @@ public class RobotContainer {
  public static void TeleOp(){
     Smart_Dashboard.Smart_Dashboard_TeleOp();
     DriveSubsystem.driveTeleOp();
-    WristSubsystem.WristTeleOp();
+    Wrist.WristTeleOp();
+    Intake.IntakeTeleOp();
     Limelight.Update_Limelight_Tracking();
     Limelight.Limelight_Tracking();
  }

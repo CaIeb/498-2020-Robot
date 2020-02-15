@@ -3,7 +3,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Subsystems.DriveSubsystem;
 import frc.robot.Sensors.Gyro;
 
-public class AutoGyro extends Command {
+public class AutoTurn extends Command {
     
     public double turnAngle;
     public double speed;
@@ -11,7 +11,7 @@ public class AutoGyro extends Command {
      * @param turnAngle Angle to turn
      * @param speed Speed to turn (Negative Value is Backwards)
     */
-    public AutoGyro(double turnAngle, double speed){
+    public AutoTurn(double turnAngle, double speed){
         this.turnAngle = turnAngle;
         this.speed = speed;
         /*

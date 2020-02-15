@@ -7,7 +7,7 @@ public class TestAuto extends CommandGroup {
     public TestAuto() {
         addSequential(new TimedTurn(3, 1));
         addSequential(new TimedTurn(3, -1));
-        addSequential(new AutoGyro(90, 1));
-        addSequential(new AutoGyro(90, -1));
+        addSequential(new AutoTurn(90, 1));
+        addSequential(new AutoTurn(90, -1));
     }
 }

@@ -1,4 +1,4 @@
-package frc.robot.Autonomous.AutoGroups.CommandGroups;
+package frc.robot.Autonomous.AutoCommands.CommandGroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Autonomous.AutoCommands.*;
@@ -21,7 +21,7 @@ public class DriveWrist extends CommandGroup {
         this.wristPosition = wristPosition;
         this.wristSpeed = wristSpeed;
         addParallel(new AutoDrive(distance, distanceSpeed));
-        addParallel(new AutoWrist(wristPosition, wristSpeed));
+        addParallel(new AutoWrist(wristPosition));
     }
 
 }

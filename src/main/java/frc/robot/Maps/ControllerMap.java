@@ -58,4 +58,10 @@ public final class ControllerMap{
   public static boolean o_A_Button = operatorController.getAButton();
   public static boolean o_X_Button = operatorController.getXButton();
   public static boolean o_Y_Button = operatorController.getYButton();
+
+  public static boolean o_B_Button_Press = operatorController.getBButtonPressed();
+  public static boolean o_A_Button_Press = operatorController.getAButtonPressed();
+  public static boolean o_X_Button_Press = operatorController.getXButtonPressed();
+  public static boolean o_Y_Button_Press = operatorController.getYButtonPressed();
 }
+
