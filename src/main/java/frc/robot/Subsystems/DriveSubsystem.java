@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Smart_Dashboard;
 import frc.robot.Maps.ControllerMap;
-import frc.robot.Sensors.Encoders.DriveEncoders;;
+import frc.robot.Sensors.Encoders.DriveEncoders;
 
 public final class DriveSubsystem {
     //Speed controller CAN ID
@@ -47,6 +47,7 @@ public static void driveInit() {
     double drive_Speed = ControllerMap.d_Y_Axis_L() * Smart_Dashboard.smartDriveSpeed();
     double steer_Speed = ControllerMap.d_X_Axis_R() * Smart_Dashboard.smartSteerSpeed();
     m_drive.arcadeDrive(drive_Speed, steer_Speed);
+
    }
 }
 

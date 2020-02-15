@@ -37,6 +37,8 @@ public final class Smart_Dashboard {
         SmartDashboard.putNumber("Left Encoder Distance", DriveEncoders.getTrueLeftDistance());
         SmartDashboard.putNumber("Right Encoder Distance", DriveEncoders.getTrueRightDistance());
         SmartDashboard.putNumber("Wrist Angle", WristEncoder.getWristAngle());
+        SmartDashboard.putBoolean("Down Limit", WristEncoder.getWristDown());
+        SmartDashboard.putBoolean("Up Limit", WristEncoder.getWristUp());
         //SmartDashboard.putNumber("Barometric Pressure", Gyro.gyro.getBarometricPressure());
         //SmartDashboard.putNumber("Gyro X", Gyro.gyro.getGyroAngleX());
         //SmartDashboard.putNumber("Gyro Y", Gyro.gyro.getGyroAngleY());

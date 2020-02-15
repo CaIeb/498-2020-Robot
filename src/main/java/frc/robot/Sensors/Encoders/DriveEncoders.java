@@ -3,7 +3,6 @@ package frc.robot.Sensors.Encoders;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.Encoder;
-import frc.robot.Smart_Dashboard;
 import frc.robot.Subsystems.*;
 
 public class DriveEncoders {
