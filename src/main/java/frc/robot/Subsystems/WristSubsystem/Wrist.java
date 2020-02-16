@@ -11,24 +11,20 @@ public class Wrist{
  private static int wristTalonID  = 7;
  public static WPI_TalonSRX m_WristTalon = new WPI_TalonSRX(wristTalonID);
     public static void WristTeleOp() {
-        if (WristEncoder.getWristDown() == false && WristEncoder.getWristUp() == false) {
 
-        
-        if (ControllerMap.o_A_Button) {
-         m_WristTalon.set(.25);
-        }
-        /*
-        else if (ControllerMap.o_X_Button_Press) {
-         WristHome.home();
-        }
-        */
-        else if (ControllerMap.o_Y_Button) {
-            m_WristTalon.set(-.25);
-        }
+            double speed = ControllerMap.o_Y_Axis_R() * Smart_Dashboard.smartWristSpeed();
+            if (WristEncoder.getWristFree()) {
+            m_WristTalon.set(speed);
+            }
+            else if (WristEncoder.getWristDown() == false){
+                m_WristTalon.set(Math.abs(speed));
+            }
+            else if (WristEncoder.getWristUp() == false) {
+                m_WristTalon.set(-Math.abs(speed));
+            }
+            else {
+                m_WristTalon.set(0);
+            }
+           }
     }
-    else {
-        m_WristTalon.set(0);
-    }
-        //WristEncoder.getWristAngle();
-    }
-}
+

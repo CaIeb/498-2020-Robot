@@ -30,6 +30,8 @@ public final class Smart_Dashboard {
     public static double smartDriveSpeed() {return SmartDashboard.getNumber("Drive Speed", .8);}
     public static double smartSteerSpeed() {return SmartDashboard.getNumber("Steer Speed", .8);}
     public static double smartWristSpeed() {return SmartDashboard.getNumber("Wrist Speed", .8);}
+    public static double smartIntakeSpeed() {return SmartDashboard.getNumber("Intake Speed", .8);}
+    public static double smartOutakeSpeed() {return SmartDashboard.getNumber("Outake Speed", .8);}
 
     public static void Smart_Dashboard_Periodic() {
         //Put general readings/updates here
@@ -46,11 +48,15 @@ public final class Smart_Dashboard {
         smartDriveSpeed();
         smartSteerSpeed();
         smartWristSpeed();
+        smartIntakeSpeed();
+        smartOutakeSpeed();
     }
     public static void Smart_Dashboard_RobotInit() {
-        SmartDashboard.putNumber("Drive Speed", .8);
-        SmartDashboard.putNumber("Steer Speed", .8);
-        SmartDashboard.putNumber("Wrist Speed", .8);
+        SmartDashboard.putNumber("Drive Speed", .75);
+        SmartDashboard.putNumber("Steer Speed", .75);
+        SmartDashboard.putNumber("Wrist Speed", .75);
+        SmartDashboard.putNumber("Intake Speed", .75);
+        SmartDashboard.putNumber("Outake Speed", .75);
         //Mostly just auto selections
         m_autochooser.setDefaultOption("Auto 1", auto1);
         m_autochooser.addOption("Auto 2", auto2);

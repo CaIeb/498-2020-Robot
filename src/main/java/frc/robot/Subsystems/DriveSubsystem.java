@@ -28,6 +28,8 @@ public final class DriveSubsystem {
     public static WPI_TalonSRX m_LTalon = new WPI_TalonSRX(lTalonID);
     public static DifferentialDrive m_drive = new DifferentialDrive(m_LTalon, m_RTalon);
 
+    private static double old_Drive_Speed = 0;
+    private static double old_Steer_Speed = 0;
 
 public static void driveInit() {
     //Right Drive SpeedControllerGroup
@@ -47,7 +49,20 @@ public static void driveInit() {
     double drive_Speed = ControllerMap.d_Y_Axis_L() * Smart_Dashboard.smartDriveSpeed();
     double steer_Speed = ControllerMap.d_X_Axis_R() * Smart_Dashboard.smartSteerSpeed();
     m_drive.arcadeDrive(drive_Speed, steer_Speed);
-
+    
+    if (drive_Speed > old_Drive_Speed) {
+        drive_Speed += .1;
+        m_drive.arcadeDrive(drive_Speed, steer_Speed);
+    }
+    else if (steer_Speed > old_Steer_Speed) {
+        steer_Speed += .1;
+        m_drive.arcadeDrive(drive_Speed, steer_Speed);
+    }
+    else {
+        m_drive.arcadeDrive(drive_Speed, steer_Speed);
+    }
+    old_Drive_Speed = drive_Speed;
+    old_Steer_Speed = steer_Speed;
    }
 }
 

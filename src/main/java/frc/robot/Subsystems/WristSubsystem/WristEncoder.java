@@ -19,6 +19,9 @@ public class WristEncoder {
     public static boolean getWristDown() {
         return wristDown.get();
     }
+    public static boolean getWristFree() {
+        return (getWristUp() && getWristDown());
+    }
     public static double getWristAngle() {
         //m_WEncoder.setDistancePerPulse(360/2048);
         return (m_WristPot.get() * (tickToAngleConversion));
