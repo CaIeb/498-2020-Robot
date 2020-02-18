@@ -2,6 +2,7 @@ package frc.robot.Subsystems.WristSubsystem;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import frc.robot.Smart_Dashboard;
 import frc.robot.Maps.ControllerMap;
 import frc.robot.Subsystems.WristSubsystem.WristCommands.*;
@@ -11,16 +12,16 @@ public class Wrist{
  public static WPI_TalonSRX m_WristTalon = new WPI_TalonSRX(wristTalonID);
     public static void WristTeleOp() {
 
-        if (ControllerMap.o_Bumper_R) {
+        if (ControllerMap.operatorController.getBumper(Hand.kRight)) {
          WristCollect.collect();
         }
-        else if (ControllerMap.o_Bumper_L) {
+        else if (ControllerMap.operatorController.getBumper(Hand.kLeft)) {
          WristHome.home();
         }
-        else if (ControllerMap.o_A_Button) {
+        else if (ControllerMap.operatorController.getAButton()) {
          WristScore.score();
         }
-        else if (ControllerMap.o_Y_Button) {
+        else if (ControllerMap.operatorController.getXButton()) {
          WristLoad.load();
         }
         else {

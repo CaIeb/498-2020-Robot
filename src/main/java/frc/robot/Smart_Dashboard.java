@@ -93,7 +93,7 @@ public final class Smart_Dashboard {
     }
 
     public static void Smart_Dashboard_TeleOp() {
-
+        pdp.clearStickyFaults();
     }
 
 }

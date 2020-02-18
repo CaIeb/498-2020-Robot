@@ -14,7 +14,7 @@ public class WristSensors {
     
     private static double tickToAngleConversion = 90 / .35;
 
-    public static boolean getWristUp() {
+    public static boolean getWristUp() { //false = activated
         return wristUp.get();
     }
     public static boolean getWristDown() {
@@ -26,7 +26,7 @@ public class WristSensors {
     public static double getWristAngle() {
         //m_WEncoder.setDistancePerPulse(360/2048);
         double wristAngle = m_WristPot.get() * (tickToAngleConversion);
-        return wristAngle;
+        return m_WristPot.get();
     }
 }
     

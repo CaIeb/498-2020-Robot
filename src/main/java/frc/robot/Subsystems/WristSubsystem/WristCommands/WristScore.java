@@ -18,11 +18,11 @@ public class WristScore {
     }
     public static void score(){ 
         
-        if (WristSensors.getWristAngle() > (wristPosition /*+ toleranceAngle*/)) {
-         Wrist.m_WristTalon.set(ControlMode.PercentOutput, -speed);
+        if (WristSensors.getWristAngle() > (wristPosition + toleranceAngle)) {
+         Wrist.m_WristTalon.set(-speed);
         }
-        else if (WristSensors.getWristAngle() < wristPosition) {
-            Wrist.m_WristTalon.set(ControlMode.PercentOutput, speed);
+        else if (WristSensors.getWristAngle() < wristPosition - toleranceAngle) {
+            Wrist.m_WristTalon.set(speed);
         }
         /*else if (WristSensors.getWristAngle() < wristPosition + toleranceAngle && WristSensors.getWristAngle() > wristPosition - toleranceAngle) {
          Wrist.m_WristTalon.set(ControlMode.PercentOutput, speed * toleranceSpeedFactor());
@@ -33,7 +33,7 @@ public class WristScore {
 
     }
     protected static void end(){
-        Wrist.m_WristTalon.set(ControlMode.PercentOutput, 0);
+        Wrist.m_WristTalon.set(0);
     }
 
 }

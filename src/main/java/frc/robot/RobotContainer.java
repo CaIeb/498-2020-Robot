@@ -11,6 +11,7 @@ public class RobotContainer {
     Smart_Dashboard.Smart_Dashboard_Periodic();
    }
  public static void RobotInit() {
+    
     Smart_Dashboard.Smart_Dashboard_RobotInit();
     DriveSubsystem.driveInit();
     Limelight.LimelightInit();
