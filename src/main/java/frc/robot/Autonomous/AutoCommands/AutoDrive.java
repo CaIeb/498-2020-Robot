@@ -11,7 +11,7 @@ public class AutoDrive extends Command {
     private double startTolerance =  10 + stopTolerance;
     private double endTolerance = 10 - stopTolerance;
     private double kP = distance - DriveEncoders.getTrueLeftDistance();
-    private double kI = .09;
+    private double kI = .9/startTolerance;
     private double toleranceSpeedFactor() {
         return kP * kI;
     }

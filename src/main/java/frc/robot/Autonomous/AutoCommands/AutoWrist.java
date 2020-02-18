@@ -27,15 +27,15 @@ public class AutoWrist extends Command {
     protected void execute() {
      double toleranceAngle = 20;
 
-     double kP = wristPosition - WristEncoder.getWristAngle();
+     double kP = wristPosition - WristSensors.getWristAngle();
      double kI = .2;
      double toleranceSpeedFactor = kP * kI;
 
-        if (WristEncoder.getWristAngle() > (wristPosition + toleranceAngle) || WristEncoder.getWristAngle() < wristPosition - toleranceAngle){
+        if (WristSensors.getWristAngle() > (wristPosition + toleranceAngle) || WristSensors.getWristAngle() < wristPosition - toleranceAngle){
             Wrist.m_WristTalon.set(ControlMode.PercentOutput, speed);
         }
 
-        else if (WristEncoder.getWristAngle() < (wristPosition + toleranceAngle) && WristEncoder.getWristAngle() > (wristPosition - toleranceAngle)) {
+        else if (WristSensors.getWristAngle() < (wristPosition + toleranceAngle) && WristSensors.getWristAngle() > (wristPosition - toleranceAngle)) {
             Wrist.m_WristTalon.set(ControlMode.PercentOutput, speed * toleranceSpeedFactor);
         }
         else {
@@ -43,7 +43,7 @@ public class AutoWrist extends Command {
         }
     }
     protected boolean isFinished() {
-        return WristEncoder.getWristAngle() == wristPosition;
+        return WristSensors.getWristAngle() == wristPosition;
     }
     protected void end(){
         DriveSubsystem.m_drive.arcadeDrive(0, 0);

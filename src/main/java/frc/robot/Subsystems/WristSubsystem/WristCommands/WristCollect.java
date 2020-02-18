@@ -5,10 +5,10 @@ import frc.robot.Subsystems.WristSubsystem.*;
 import frc.robot.Smart_Dashboard;
 import frc.robot.Maps.WristPositionMap;
 
-public class WristHome {
+public class WristCollect {
 
     private static double speed = Smart_Dashboard.smartWristSpeed();
-    private static double wristPosition = WristPositionMap.home;
+    private static double wristPosition = WristPositionMap.collect;
     private static double toleranceAngle = .05;
 
     public static double kP = wristPosition - WristSensors.getWristAngle();
@@ -16,8 +16,8 @@ public class WristHome {
     private static double toleranceSpeedFactor() {
         return kP * kI;
     }
-    public static void home() { 
-        if(WristSensors.getWristUp() == true) {
+    public static void collect(){ 
+        if(WristSensors.getWristDown() == true) {
             if (WristSensors.getWristAngle() > (wristPosition /*+ toleranceAngle*/)) {
                 Wrist.m_WristTalon.set(ControlMode.PercentOutput, -speed);
                }
@@ -35,12 +35,12 @@ public class WristHome {
             }
         }
         else {
-         end();
+            end();
         }
 
     }
     protected static void end(){
-     Wrist.m_WristTalon.set(ControlMode.PercentOutput, 0);
+        Wrist.m_WristTalon.set(ControlMode.PercentOutput, 0);
     }
 
 }

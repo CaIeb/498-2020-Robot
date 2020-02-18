@@ -6,12 +6,13 @@ import frc.robot.Sensors.Gyro;
 //import frc.robot.Subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import frc.robot.Sensors.Encoders.*;
-import frc.robot.Subsystems.WristSubsystem.WristEncoder;
+import frc.robot.Subsystems.WristSubsystem.WristSensors;
 
 public final class Smart_Dashboard {
     public static int pdpID = 0;
     public static PowerDistributionPanel pdp = new PowerDistributionPanel(pdpID);
-    public static double pdpVoltage = pdp.getVoltage();
+     public static double pdpVoltage = pdp.getVoltage();
+
     //Auto Selector Definitions
     public static String m_autoSelected;
     public static final SendableChooser<String> m_autochooser = new SendableChooser<>();
@@ -27,20 +28,30 @@ public final class Smart_Dashboard {
     public static final String auto9 = "Auto 9";
     public static final String auto10 = "Auto 10";
 
-    public static double smartDriveSpeed() {return SmartDashboard.getNumber("Drive Speed", .8);}
+    public static double smartDriveSpeed() {return SmartDashboard.getNumber("Drive Speed", .9);}
     public static double smartSteerSpeed() {return SmartDashboard.getNumber("Steer Speed", .8);}
-    public static double smartWristSpeed() {return SmartDashboard.getNumber("Wrist Speed", .8);}
+    public static double smartWristSpeed() {return SmartDashboard.getNumber("Wrist Speed", .75);}
     public static double smartIntakeSpeed() {return SmartDashboard.getNumber("Intake Speed", .8);}
     public static double smartOutakeSpeed() {return SmartDashboard.getNumber("Outake Speed", .8);}
+    //public static double smartRaiseSpeed() {return SmartDashboard.getNumber("Raise Speed", .8);}
+    //public static double smartClimbSpeed() {return SmartDashboard.getNumber("Climb Speed", .8);}
 
     public static void Smart_Dashboard_Periodic() {
         //Put general readings/updates here
-        SmartDashboard.putNumber("PDP Voltage", pdpVoltage);
+
+        //SmartDashboard.putNumber("PDP Voltage", pdpVoltage);
+        //SmartDashboard.putNumber("PDP Total Current", pdp.getTotalCurrent());
+        for(int i = 0; i < 16; i++)
+		{
+			SmartDashboard.putNumber("Channel " + i, pdp.getCurrent(i));
+		}
+		
+
         SmartDashboard.putNumber("Left Encoder Distance", DriveEncoders.getTrueLeftDistance());
         SmartDashboard.putNumber("Right Encoder Distance", DriveEncoders.getTrueRightDistance());
-        SmartDashboard.putNumber("Wrist Angle", WristEncoder.getWristAngle());
-        SmartDashboard.putBoolean("Down Limit", WristEncoder.getWristDown());
-        SmartDashboard.putBoolean("Up Limit", WristEncoder.getWristUp());
+        SmartDashboard.putNumber("Wrist Angle", WristSensors.getWristAngle());
+        SmartDashboard.putBoolean("Down Limit", WristSensors.getWristDown());
+        SmartDashboard.putBoolean("Up Limit", WristSensors.getWristUp());
         //SmartDashboard.putNumber("Barometric Pressure", Gyro.gyro.getBarometricPressure());
         //SmartDashboard.putNumber("Gyro X", Gyro.gyro.getGyroAngleX());
         //SmartDashboard.putNumber("Gyro Y", Gyro.gyro.getGyroAngleY());
@@ -52,11 +63,15 @@ public final class Smart_Dashboard {
         smartOutakeSpeed();
     }
     public static void Smart_Dashboard_RobotInit() {
-        SmartDashboard.putNumber("Drive Speed", .75);
-        SmartDashboard.putNumber("Steer Speed", .75);
+        pdp.clearStickyFaults();
+        
+        SmartDashboard.putNumber("Drive Speed", .9);
+        SmartDashboard.putNumber("Steer Speed", .8);
         SmartDashboard.putNumber("Wrist Speed", .75);
-        SmartDashboard.putNumber("Intake Speed", .75);
-        SmartDashboard.putNumber("Outake Speed", .75);
+        SmartDashboard.putNumber("Intake Speed", .8);
+        SmartDashboard.putNumber("Outake Speed", .8);
+        //SmartDashboard.putNumber("Raise Speed", .8);
+        //SmartDashboard.putNumber("Climb Speed", .8);
         //Mostly just auto selections
         m_autochooser.setDefaultOption("Auto 1", auto1);
         m_autochooser.addOption("Auto 2", auto2);
