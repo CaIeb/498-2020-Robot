@@ -25,7 +25,7 @@ public final class ClimberSubsystem {
         }
         else if (aButtonHold) {
             //ClimberEncoders.LowerClimber();
-            climber.set(-.5);
+            climber.set(-.95);
         }
         else { 
             climber.set(0);

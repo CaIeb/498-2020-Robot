@@ -29,10 +29,10 @@ public class DriveEncoders {
     }
     public static void balanceEncoders() {
         if (getTrueLeftDistance() >= getTrueRightDistance()) {
-            DriveSubsystem.m_drive.tankDrive(0, .25);
+            //DriveSubsystem.m_drive.tankDrive(0, .25);
         }
         else if (getTrueLeftDistance() <= getTrueRightDistance()) {
-            DriveSubsystem.m_drive.tankDrive(.25, 0);
+            //DriveSubsystem.m_drive.tankDrive(.25, 0);
         }
     }
     public static double setTrueDistance() {

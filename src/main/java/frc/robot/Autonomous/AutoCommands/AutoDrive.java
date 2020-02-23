@@ -40,16 +40,16 @@ public class AutoDrive extends Command {
     }
     protected void execute() {
         if (DriveEncoders.getTrueRightDistance() > (startTolerance) && DriveEncoders.getTrueRightDistance() < (distance - endTolerance) ){
-            DriveSubsystem.m_drive.arcadeDrive(speed, 0);
+            //DriveSubsystem.m_drive.arcadeDrive(speed, 0);
         }
         else if (DriveEncoders.getTrueRightDistance() < (startTolerance) || DriveEncoders.getTrueRightDistance() > (distance - endTolerance)) {
-            DriveSubsystem.m_drive.arcadeDrive(speed * toleranceSpeedFactor(), 0);
+            //DriveSubsystem.m_drive.arcadeDrive(speed * toleranceSpeedFactor(), 0);
         }
         else {
             end();
         }
     }
     protected void end(){
-        DriveSubsystem.m_drive.arcadeDrive(0, 0);
+        //DriveSubsystem.m_drive.arcadeDrive(0, 0);
     }
 }

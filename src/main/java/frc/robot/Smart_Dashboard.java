@@ -39,12 +39,12 @@ public final class Smart_Dashboard {
 
     public static void Smart_Dashboard_Periodic() {
 
-        //SmartDashboard.putNumber("PDP Voltage", pdpVoltage);
-        //SmartDashboard.putNumber("PDP Total Current", pdp.getTotalCurrent());
-        // for(int i = 0; i < 16; i++)
-		// {
-		// 	SmartDashboard.putNumber("Channel " + i, pdp.getCurrent(i));
-		// }
+        SmartDashboard.putNumber("PDP Voltage", pdpVoltage);
+        SmartDashboard.putNumber("PDP Total Current", pdp.getTotalCurrent());
+        for(int i = 0; i < 16; i++)
+		{
+			SmartDashboard.putNumber("Channel " + i, pdp.getCurrent(i));
+		}
 		
         SmartDashboard.putNumber("Left Encoder Distance", DriveEncoders.getTrueLeftDistance());
         SmartDashboard.putNumber("Right Encoder Distance", DriveEncoders.getTrueRightDistance());

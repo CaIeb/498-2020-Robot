@@ -1,7 +1,11 @@
 package frc.robot.Subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Maps.ControllerMap;
 
@@ -23,8 +27,8 @@ public final class DriveSubsystem {
     public static WPI_VictorSPX m_LVictor_2 = new WPI_VictorSPX(l2VictorID);
     public static WPI_VictorSPX m_LVictor_3 = new WPI_VictorSPX(l3VictorID);
 
-    // public static SpeedControllerGroup right_drive = new SpeedControllerGroup(m_RTalon_1, m_RVictor_2, m_RVictor_3);
-    // public static SpeedControllerGroup left_drive = new SpeedControllerGroup(m_LTalon_1, m_LVictor_2, m_LVictor_3);
+     //public static SpeedControllerGroup right_drive = new SpeedControllerGroup(m_RTalon_1, m_RVictor_2, m_RVictor_3);
+     //public static SpeedControllerGroup left_drive = new SpeedControllerGroup(m_LTalon_1, m_LVictor_2, m_LVictor_3);
 
      public static DifferentialDrive m_drive = new DifferentialDrive(m_LTalon_1, m_RTalon_1);
 
@@ -37,9 +41,22 @@ public final class DriveSubsystem {
     private static double stopDriveRampSpeed = .3;
     private static double stopSteerRampSpeed = .3;
 
+    private static SupplyCurrentLimitConfiguration talonConfig = new SupplyCurrentLimitConfiguration(true, 20, 21, 0);
     public static void driveInit() {
-        m_RTalon_1.configContinuousCurrentLimit(40);
-        m_LTalon_1.configContinuousCurrentLimit(40);
+        // m_LTalon_1.enableCurrentLimit(true);
+        // m_RTalon_1.enableCurrentLimit(true);
+        // m_RTalon_1.configPeakCurrentLimit(20);
+        // m_LTalon_1.configPeakCurrentLimit(20);
+        // m_RTalon_1.configContinuousCurrentLimit(20);
+        // m_LTalon_1.configContinuousCurrentLimit(20);
+        // m_LTalon_1.configSupplyCurrentLimit(talonConfig);
+        // m_RTalon_1.configSupplyCurrentLimit(talonConfig);
+        m_LTalon_1.configContinuousCurrentLimit(20, 0);
+        m_LTalon_1.configPeakCurrentLimit(0);
+        m_LTalon_1.enableCurrentLimit(true);
+        m_RTalon_1.configContinuousCurrentLimit(20, 0);
+        m_RTalon_1.configPeakCurrentLimit(0);
+        m_RTalon_1.enableCurrentLimit(true);
 
         m_RVictor_2.follow(m_RTalon_1);
         m_RVictor_3.follow(m_RTalon_1);
@@ -89,18 +106,19 @@ public final class DriveSubsystem {
      //double steer_Speed = ControllerMap.d_X_Axis_R() * joystick_RX_Sensitivity);
       drive_Speed();
      double steer_Speed = ControllerMap.d_X_Axis_R();
-     double drive_Speed = drive_Speed();
-    //m_drive.arcadeDrive(-drive_Speed, steer_Speed);
+     //double drive_Speed = drive_Speed();
+     double drive_Speed = ControllerMap.d_Y_Axis_L();
+     m_drive.arcadeDrive(-drive_Speed, steer_Speed);
     old_Steer_Speed = steer_Speed;
     old_Drive_Speed = drive_Speed;
      //steer_Speed = controller_Steer;
 //For Individual Control\\
     //double rightmotorSpeed = ControllerMap.d_Y_Axis_L() - ControllerMap.d_X_Axis_R();
     //double leftmotorSpeed = ControllerMap.d_Y_Axis_L() + ControllerMap.d_X_Axis_R();
-    //    m_RTalon_1.set(rightmotorSpeed);
+    //    m_RTalon_1.set(ControlMode.PercentOutput, rightmotorSpeed);
     //    m_RVictor_2.set(rightmotorSpeed);
     //    m_RVictor_3.set(rightmotorSpeed);
-    //    m_LTalon_1.set(-leftmotorSpeed);
+    //    m_LTalon_1.set(ControlMode.PercentOutput, -leftmotorSpeed);
     //    m_LVictor_2.set(-leftmotorSpeed);
     //    m_LVictor_3.set(-leftmotorSpeed);
     }

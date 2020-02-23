@@ -26,9 +26,9 @@ public class AutoTurn extends Command {
         Gyro.gyro.reset();
     }
     protected void execute() {
-        DriveSubsystem.m_drive.arcadeDrive(0, speed);
+        //DriveSubsystem.m_drive.arcadeDrive(0, speed);
     }
     protected void end(){
-        DriveSubsystem.m_drive.arcadeDrive(0, 0);
+        //DriveSubsystem.m_drive.arcadeDrive(0, 0);
     }
 }

@@ -30,9 +30,9 @@ public class AutoCurve extends Command {
         Gyro.gyro.reset();
     }
     protected void execute() {
-        DriveSubsystem.m_drive.arcadeDrive(distanceSpeed, turnSpeed);
+        //DriveSubsystem.m_drive.arcadeDrive(distanceSpeed, turnSpeed);
     }
     protected void end(){
-        DriveSubsystem.m_drive.arcadeDrive(0, 0);
+        //DriveSubsystem.m_drive.arcadeDrive(0, 0);
     }
 }

@@ -18,9 +18,9 @@ public class TimedTurn extends Command {
         autoTimer.start();
     }
     protected void execute() {
-        DriveSubsystem.m_drive.arcadeDrive(0, turnSpeed);
+        //DriveSubsystem.m_drive.arcadeDrive(0, turnSpeed);
     }
     protected void end() {
-        DriveSubsystem.m_drive.arcadeDrive(0, 0);
+        //DriveSubsystem.m_drive.arcadeDrive(0, 0);
     }
 }

@@ -46,6 +46,6 @@ public class AutoWrist extends Command {
         return WristSensors.getWristAngle() == wristPosition;
     }
     protected void end(){
-        DriveSubsystem.m_drive.arcadeDrive(0, 0);
+        //DriveSubsystem.m_drive.arcadeDrive(0, 0);
     }
 }
