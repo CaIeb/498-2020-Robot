@@ -11,13 +11,12 @@ public class WristSensors {
     public static DigitalInput wristDown = new DigitalInput(wristDownChannel);
     public static DigitalInput wristUp = new DigitalInput(wristUpChannel);
     //private static double angleToTickConversion = 2048 / 360;
-    
-    private static double tickToAngleConversion = 90 / .35;
+    //private static double tickToAngleConversion = 90 / .35;
 
-    public static boolean getWristUp() { //false = activated
+    public static boolean getWristUp() { //false = activated\\
         return wristUp.get();
     }
-    public static boolean getWristDown() {
+    public static boolean getWristDown() { //false = activated\\
         return wristDown.get();
     }
     public static boolean getWristFree() {
@@ -25,7 +24,7 @@ public class WristSensors {
     }
     public static double getWristAngle() {
         //m_WEncoder.setDistancePerPulse(360/2048);
-        double wristAngle = m_WristPot.get() * (tickToAngleConversion);
+        //double wristAngle = m_WristPot.get() * (tickToAngleConversion);
         return m_WristPot.get();
     }
 }

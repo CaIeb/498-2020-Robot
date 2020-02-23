@@ -16,8 +16,8 @@ public class DriveEncoders {
     static boolean reversed = true;
     static boolean notReversed = false;
     
-    public static Encoder m_REncoder = new Encoder(0, 1, reversed);
-    public static Encoder m_LEncoder = new Encoder(2, 3, notReversed);
+    public static Encoder m_REncoder = new Encoder(0, 1, notReversed);
+    public static Encoder m_LEncoder = new Encoder(2, 3, reversed);
 
     public static double getTrueLeftDistance() {
         return (m_LEncoder.getDistance() * (trueDistanceConversion));

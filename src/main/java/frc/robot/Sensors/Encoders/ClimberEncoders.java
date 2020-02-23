@@ -11,7 +11,7 @@ public class ClimberEncoders {
     private static double reelCircumference = 2 * Math.PI * reelRadius;
     private static double reelToDistanceCoversionFactor = (5/16);
     private static double trueDistanceConversion = (reelCircumference * reelToDistanceCoversionFactor);
-    public static double maxClimbInches = 69;
+    public static double maxClimbInches = 66;
     public static int maxClimberExtension = (int) Math.round(26214.4 * (maxClimbInches) - 5120);
     public static int minClimberExtension = 0;    
 
@@ -21,7 +21,6 @@ public class ClimberEncoders {
 
     public static void configureEncoders() { //for MagEncoders
         ClimberSubsystem.climber.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-        
     }
 
     public static double getClimberExtension() {

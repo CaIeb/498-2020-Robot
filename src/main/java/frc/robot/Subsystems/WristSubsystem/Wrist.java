@@ -3,7 +3,7 @@ package frc.robot.Subsystems.WristSubsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import frc.robot.Smart_Dashboard;
+
 import frc.robot.Maps.ControllerMap;
 import frc.robot.Subsystems.WristSubsystem.WristCommands.*;
 
@@ -21,7 +21,7 @@ public class Wrist{
         else if (ControllerMap.operatorController.getAButton()) {
          WristScore.score();
         }
-        else if (ControllerMap.operatorController.getXButton()) {
+        else if (ControllerMap.operatorController.getYButton()) {
          WristLoad.load();
         }
         else {

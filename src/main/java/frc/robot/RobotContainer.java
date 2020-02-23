@@ -1,6 +1,7 @@
 package frc.robot;
 
 import frc.robot.Subsystems.*;
+import frc.robot.Subsystems.ControlPanel.ControlPanel;
 import frc.robot.Subsystems.WristSubsystem.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.Autonomous.*;
@@ -9,6 +10,7 @@ import frc.robot.Sensors.*;
 public class RobotContainer {
  public static void RobotPeriodic() {
     Smart_Dashboard.Smart_Dashboard_Periodic();
+    //ColorSensor.ColorSensorUpdate();
    }
  public static void RobotInit() {
     
@@ -16,6 +18,7 @@ public class RobotContainer {
     DriveSubsystem.driveInit();
     Limelight.LimelightInit();
     ClimberSubsystem.ClimberInit();
+    //ColorSensor.ColorSensorInit();
    }
  public static void TeleOpInit() {
 
@@ -27,6 +30,7 @@ public class RobotContainer {
     Intake.IntakeTeleOp();
     Limelight.LimelightTeleOp();
     ClimberSubsystem.ClimberTeleop();
+    ControlPanel.ControlPanelTeleOp();
    }
  public static void AutoInit() {
     Smart_Dashboard.Smart_Dashboard_AutoInit();

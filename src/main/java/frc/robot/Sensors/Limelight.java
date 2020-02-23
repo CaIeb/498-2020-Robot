@@ -28,13 +28,12 @@ public class Limelight {
   }
  public static void Limelight_Score() {
 
-   boolean buttonDetected = ControllerMap.driverController.getBumper(Hand.kRight);
+   boolean buttonDetected = ControllerMap.driverController.getBButton();
 
    SwitchLimelightScore();
 
    if (buttonDetected && m_LimelightHasValidTarget) {
      DriveSubsystem.m_drive.arcadeDrive(m_LimelightDriveCommand,m_LimelightSteerCommand);
-        
     }
    else {
      DriveSubsystem.driveTeleOp();
@@ -46,11 +45,10 @@ public class Limelight {
     //double drive = -m_Controller.getY(Hand.kLeft);
     boolean buttonDetected = ControllerMap.driverController.getBumper(Hand.kLeft);
 
-   SwitchLimelightLoad();
 
    if (buttonDetected && m_LimelightHasValidTarget) {
      DriveSubsystem.m_drive.arcadeDrive(m_LimelightDriveCommand,m_LimelightSteerCommand);
-        
+      SwitchLimelightLoad();
     }
    else {
      DriveSubsystem.driveTeleOp();

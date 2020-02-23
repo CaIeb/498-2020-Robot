@@ -11,20 +11,30 @@ public final class Intake {
 
     public static Victor m_FrontVictor = new Victor (frontVictorID);
     public static Victor m_BackVictor = new Victor(backVictorID);
-
+    public static void Drive() {
+      if (ControllerMap.d_Bumper_R) {
+       double frontRollerSpeed = -.8;
+       Intake.m_FrontVictor.set(frontRollerSpeed);
+      }
+      else {
+          Intake.m_FrontVictor.set(0);
+      }
+    }
     public static void IntakeTeleOp() {
-     //double front_Intake_Sensitivity = 1.0; //Value 0-1
-     //double front_Outake_Sensitivity = 1.0; //Value 0-1
-     //double back_Intake_Sensitivity = 1.0; //Value 0-1
-     //double back_Outake_Sensitivity = 1.0; //Value 0-1
+     double front_Intake_Sensitivity = 1; //Value 0-1
+     double front_Outake_Sensitivity = 1; //Value 0-1
+     double back_Intake_Sensitivity = 1; //Value 0-1
+     double back_Outake_Sensitivity = 1; //Value 0-1
 
-     double frontRollerSpeed = ((ControllerMap.driverController.getTriggerAxis(Hand.kLeft)) * Smart_Dashboard.smartOutakeSpeed()) 
-     - ((ControllerMap.driverController.getTriggerAxis(Hand.kRight)) *Smart_Dashboard.smartIntakeSpeed());
+     double frontRollerSpeed = ((ControllerMap.driverController.getTriggerAxis(Hand.kLeft)) * front_Intake_Sensitivity)//Intake 
+     - ((ControllerMap.driverController.getTriggerAxis(Hand.kRight)) * front_Outake_Sensitivity);//Outake
 
-     double backRollerSpeed = ((ControllerMap.driverController.getTriggerAxis(Hand.kLeft)) * Smart_Dashboard.smartOutakeSpeed()) 
-     - ((ControllerMap.driverController.getTriggerAxis(Hand.kRight)) * Smart_Dashboard.smartIntakeSpeed());
+     double backRollerSpeed = ((ControllerMap.driverController.getTriggerAxis(Hand.kLeft)) * back_Intake_Sensitivity) //Intake
+     - ((ControllerMap.driverController.getTriggerAxis(Hand.kRight)) * back_Outake_Sensitivity);//Outake
 
      m_FrontVictor.set(frontRollerSpeed);
      m_BackVictor.set(backRollerSpeed);
+      
+     //Drive();
    }
 }

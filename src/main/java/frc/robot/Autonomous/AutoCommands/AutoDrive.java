@@ -10,7 +10,7 @@ public class AutoDrive extends Command {
     private double stopTolerance = 1;
     private double startTolerance =  10 + stopTolerance;
     private double endTolerance = 10 - stopTolerance;
-    private double kP = distance - DriveEncoders.getTrueLeftDistance();
+    private double kP = distance - DriveEncoders.getTrueRightDistance();
     private double kI = .9/startTolerance;
     private double toleranceSpeedFactor() {
         return kP * kI;
@@ -33,16 +33,16 @@ public class AutoDrive extends Command {
         */
     }
     protected boolean isFinished() {
-         return (Math.abs(DriveEncoders.getTrueLeftDistance()) < distance +  stopTolerance && Math.abs(DriveEncoders.getTrueLeftDistance()) > distance - stopTolerance);
+         return (Math.abs(DriveEncoders.getTrueRightDistance()) < distance +  stopTolerance && Math.abs(DriveEncoders.getTrueRightDistance()) > distance - stopTolerance);
     }
     protected void initialize() {
         DriveEncoders.resetEncoders();
     }
     protected void execute() {
-        if (DriveEncoders.getTrueLeftDistance() > (startTolerance) && DriveEncoders.getTrueLeftDistance() < (distance - endTolerance) ){
+        if (DriveEncoders.getTrueRightDistance() > (startTolerance) && DriveEncoders.getTrueRightDistance() < (distance - endTolerance) ){
             DriveSubsystem.m_drive.arcadeDrive(speed, 0);
         }
-        else if (DriveEncoders.getTrueLeftDistance() < (startTolerance) || DriveEncoders.getTrueLeftDistance() > (distance - endTolerance)) {
+        else if (DriveEncoders.getTrueRightDistance() < (startTolerance) || DriveEncoders.getTrueRightDistance() > (distance - endTolerance)) {
             DriveSubsystem.m_drive.arcadeDrive(speed * toleranceSpeedFactor(), 0);
         }
         else {

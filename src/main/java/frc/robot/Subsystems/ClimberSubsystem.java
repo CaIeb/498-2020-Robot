@@ -2,7 +2,6 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.Maps.ControllerMap;
-import frc.robot.Sensors.Encoders.ClimberEncoders;
 
 public final class ClimberSubsystem {
     private static int climberID = 8;
