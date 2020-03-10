@@ -23,7 +23,7 @@ import frc.robot.Constants.DrivetrainConstants;
 public class Drivetrain extends SubsystemBase {
   private final double CPR = 2048;
   private final double WHEEL_CIRCUMFERENCE = Math.PI * 5;
-  private final double false_DISTANCE_CONVERSION = WHEEL_CIRCUMFERENCE / CPR;
+  private final double TRUE_DISTANCE_CONVERSION = WHEEL_CIRCUMFERENCE / CPR;
 
   private final ADIS16448_IMU gyro = new ADIS16448_IMU();
 
@@ -108,11 +108,11 @@ public class Drivetrain extends SubsystemBase {
     leftDrive.set(leftSpeed);
   }
   public double getRightTrueDistance() {
-    return rightEncoder.getDistance() * false_DISTANCE_CONVERSION;
+    return rightEncoder.getDistance() * TRUE_DISTANCE_CONVERSION;
   }
 
   public double getLeftTrueDistance() {
-    return leftEncoder.getDistance() * false_DISTANCE_CONVERSION;
+    return leftEncoder.getDistance() * TRUE_DISTANCE_CONVERSION;
   }
 
   public double getTrueDistance() {
@@ -133,7 +133,6 @@ public class Drivetrain extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
     SmartDashboard.putNumber("Left", getLeftTrueDistance());
     SmartDashboard.putNumber("Right", getRightTrueDistance());
     SmartDashboard.putNumber("X offset", Limelight.getXOffset());
@@ -143,7 +142,6 @@ public class Drivetrain extends SubsystemBase {
   
 
   private void configMotor(BaseMotorController motor, boolean isRight) {
-    //motor.configFactoryDefault();
     motor.setNeutralMode(NeutralMode.Brake);
     motor.setInverted(isRight);
   }
